@@ -7,15 +7,14 @@ function init() {
 			userName = prompt("Enter user name");
 		}
 
-		websocket = new WebSocket('ws://localhost:8080/First/servlet');
+		websocket = new WebSocket('ws://localhost:8080/ChatApp/websocket');
 		websocket.onopen = function(data) {
 			document.getElementById("main").style.display = "block";
-			console.log("socket opened");
 		};
 
 		websocket.onmessage = function(data) {
+			console.log("message received");
 			setMessage(JSON.parse(data.data));
-			console.log("message received") ;
 		};
 
 		websocket.onerror = function(e) {
@@ -48,9 +47,8 @@ function sendMessage() {
 
 	document.getElementById("message").value = '';
 
-	//setMessage(message);
+	setMessage(message);
 	websocket.send(JSON.stringify(message));
-	
 }
 
 function buildMessage(userName, message) {
@@ -64,15 +62,14 @@ function setMessage(msg) {
 	var currentHTML = document.getElementById('scrolling-messages').innerHTML;
 	var newElem;
 
-
 	if (msg.username === userName) {
-		newElem = '<p style="background: #ebebe0;"><span>' + msg.username
+		newElem = '<p style="background: #ebebe0 ; text-align: right "><span>' + msg.username
 				+ ' : ' + msg.message + '</span></p>';
 	} else {
-		newElem = '<p><span>' + msg.username + ' : ' + msg.message
+		newElem = '<p style=" text-align: left"><span>' + msg.username + ' : ' + msg.message
 				+ '</span></p>';
 	}
-	
+
 	document.getElementById('scrolling-messages').innerHTML = currentHTML
-	+ newElem;
+			+ newElem;
 }

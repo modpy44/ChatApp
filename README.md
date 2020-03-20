@@ -6,7 +6,7 @@ A java web application , could be tested on a tomcat server by following the ste
 git clone https://github.com/modpy44/ChatApp.git
 ``
 2. cd browse to the project directory
-3. Use the following command to geberate .war file 
+3. Use the following command to generate .war file 
 ``
 jar -cvf ChatApp.war *
 ``

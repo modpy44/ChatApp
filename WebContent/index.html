@@ -8,12 +8,19 @@
 </head>
 <style>
 textarea#message {
-	width: 485px;
-	height: 50px;
+	max-width:250px;
+	height:20px;
 	border: 1px solid #cccccc;
-	padding: 5px;
 	font-family: Tahoma, sans-serif;
+	margin:auto;
+	
 	resize: none;
+}
+
+.container  {
+	display: flex;
+	flex-direction: row;
+	
 }
 
 .scrolling-messages {
@@ -21,7 +28,7 @@ textarea#message {
 	width: 100%;
 	overflow-y: auto;
 	overflow-x: auto;
-	border-bottom: 1px solid #cccccc;
+	
 }
 
 .message-section {
@@ -32,9 +39,11 @@ textarea#message {
 .main {
 	display: flex;
 	flex-direction: column;
-	max-width: 500px;
+	margin :auto ;
+	max-width: 250px;
 	max-height: 570px;
-	border: 3px solid #cccccc;
+	background-color: lightblue;
+	border: 1px solid #000000;
 }
 
 .message-label {
@@ -47,32 +56,35 @@ textarea#message {
 }
 
 .button {
-	background-color: #4CAF50;
+	background: url(send.png) ;
 	border: none;
 	color: white;
 	text-align: center;
 	display: inline-block;
 	font-size: 12px;
+	padding-bottom : 2px ;
+	margin :auto ;
 	cursor: pointer;
+	
 }
 
 p {
-	width: 485px;
-	word-wrap: break-word;
-}
+          font-family: verdana;
+          font-size: 20px;
+        }
 </style>
-<body onload="init();">
-	<div id="main" class="main" style="display: none">
+<body onload="init();" > <h1 align ="center"> ChatApp - Talk to server  </h1> 
+	<div id="main" class="main" style="display: none"  >
 		<div id="scrolling-messages" class="scrolling-messages"></div>
 		<div class="message-label">
-			<span>Enter message:</span>
+			<span>your message:</span>
 		</div>
-		<div class="message-section">
+		<div class="container">
 			<div>
 				<textarea id="message"></textarea>
 			</div>
-			<div style="float: right">
-				<input type="button" value="submit" onclick="sendMessage();"
+			<div >
+				<input type="button"  onclick="sendMessage();"
 					class="button" />
 			</div>
 		</div>
